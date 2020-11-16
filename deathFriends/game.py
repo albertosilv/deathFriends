@@ -1,7 +1,8 @@
 import pygame as pg
 from os import path
+import sys
 from settings import *
-
+from player import Player
 class Game:
     def __init__(self):
         pg.init()
@@ -19,12 +20,15 @@ class Game:
 
         self.backgroudMenu_img = pg.image.load(
             path.join(image_folder, BACKGROUNDMENU))
+        self.player_img = pg.image.load(
+            path.join(image_folder, PLAYER_IMG)).convert_alpha()
         self.titleFont = pg.font.Font(path.join(text_folder, TILEFONT), 45)
         self.fontMenu = pg.font.Font(path.join(text_folder, MENUFONT), 35)
 
 
     def new(self):
-       pass
+      self.all_sprites = pg.sprite.Group()
+      self.player = Player(self, 10, 10)
 
     def run(self):
         # game loop - set self.playing = False to end the game
@@ -40,7 +44,7 @@ class Game:
         sys.exit()
 
     def update(self):
-       pass
+       self.all_sprites.update()
 
     def draw(self):
         self.screen.fill(BGCOLOR)
