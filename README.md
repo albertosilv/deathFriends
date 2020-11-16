@@ -1,8 +1,9 @@
-<img src="deathFriends/sprints/death.png">
+
+<img style="text-align:center" src="deathFriends/sprints/death.png">
 
  <p>Death Friends is a third-person shooter in multiplayer format. The game is a dispute between 6 users, in which the winner is the one who survives.</p>
 
-### 🚧  Death Friends 🚀 Under construction...  🚧
+<h3 style="text-align:center">🚧  Death Friends 🚀 Under construction...  🚧</h3>
 
 ### Features
 
