@@ -1,6 +1,6 @@
 import pygame as pg
 from os import path
-from settings import *
+from .settings import *
 class Map():
     def __init__(self, mapOne):
         self.map = []

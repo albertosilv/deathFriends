@@ -2,12 +2,12 @@ import pygame as pg
 import sys
 from os import path
 
-from player import Player
-from wall import Wall
-from titlemap import Map 
-from camera  import Camera
-from settings import *
-from mapAll import map1
+from .player import Player
+from .wall import Wall
+from .titlemap import Map 
+from .camera  import Camera
+from .settings import *
+from .mapAll import map1
 class Game:
     def __init__(self):
         pg.init()
