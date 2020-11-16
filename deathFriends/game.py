@@ -2,6 +2,8 @@ import pygame as pg
 from os import path
 import sys
 from settings import *
+from titlemap import Map 
+from mapAll import map1
 from player import Player
 class Game:
     def __init__(self):
@@ -25,10 +27,15 @@ class Game:
         self.titleFont = pg.font.Font(path.join(text_folder, TILEFONT), 45)
         self.fontMenu = pg.font.Font(path.join(text_folder, MENUFONT), 35)
 
+        self.map = Map(map1)
+
 
     def new(self):
       self.all_sprites = pg.sprite.Group()
-      self.player = Player(self, 10, 10)
+      for line, dataLine in enumerate(self.map.map):
+            for row, dataRow in enumerate(dataLine):
+                if(dataRow == 'P'):
+                    self.player = Player(self, row, line)
 
     def run(self):
         # game loop - set self.playing = False to end the game
