@@ -27,4 +27,5 @@ setuptools.setup(
         'console_scripts': ['deathFriends = deathFriends.__main__:loop']
     },
     python_requires='>=3.6',
+    include_package_data=True,
 )
