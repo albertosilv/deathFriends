@@ -1,6 +1,6 @@
 # Death Friends
 
-##### Death Friends is a third-person shooter in multiplayer format. The game is a dispute between 6 users, in which the winner is the one who survives.
+ Death Friends is a third-person shooter in multiplayer format. The game is a dispute between 6 users, in which the winner is the one who survives.
 
 ### 🚧  Death Friends 🚀 Under construction...  🚧
 
