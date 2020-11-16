@@ -4,7 +4,7 @@ from os import path
 
 from .player import Player
 from .wall import Wall
-from .titlemap import Map 
+from .tilemap import Map 
 from .camera  import Camera
 from .settings import *
 from .mapAll import map1
