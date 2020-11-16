@@ -24,5 +24,30 @@ class Player(pg.sprite.Sprite):
                 self.vel.y = PLAYER_SPEED
             if self.vel.x != 0 and self.vel.y != 0:
                 self.vel*= 0.7071
+    def collide_walls(self, dir):
+            if dir == 'x':
+                hits = pg.sprite.spritecollide(self, self.game.walls, False)
+                if hits:
+                    if self.vel.x > 0:
+                        self.pos.x = hits[0].rect.left - self.rect.width
+                    if self.vel.x < 0:
+                        self.pos.x = hits[0].rect.right
+                    self.vel.x = 0
+                    self.rect.x = self.pos.x
+            if dir == 'y':
+                hits = pg.sprite.spritecollide(self, self.game.walls, False)
+                if hits:
+                    if self.vel.y > 0:
+                        self.pos.y = hits[0].rect.top - self.rect.height
+                    if self.vel.y < 0:
+                        self.pos.y = hits[0].rect.bottom
+                    self.vel.y = 0
+                    self.rect.y = self.pos.y
+
     def update(self):
-        self.get_keys()
+            self.get_keys()
+            self.pos += self.vel * self.game.dt
+            self.rect.x = self.pos.x
+            self.collide_walls('x')
+            self.rect.y = self.pos.y
+            self.collide_walls('y')

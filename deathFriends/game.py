@@ -5,6 +5,7 @@ from settings import *
 from titlemap import Map 
 from mapAll import map1
 from player import Player
+from wall import Wall
 class Game:
     def __init__(self):
         pg.init()
@@ -24,6 +25,9 @@ class Game:
             path.join(image_folder, BACKGROUNDMENU))
         self.player_img = pg.image.load(
             path.join(image_folder, PLAYER_IMG)).convert_alpha()
+        self.wall_img = pg.image.load(
+            path.join(image_folder, WALL_IMG)).convert_alpha()
+
         self.titleFont = pg.font.Font(path.join(text_folder, TILEFONT), 45)
         self.fontMenu = pg.font.Font(path.join(text_folder, MENUFONT), 35)
 
@@ -32,8 +36,11 @@ class Game:
 
     def new(self):
       self.all_sprites = pg.sprite.Group()
+      self.walls = pg.sprite.Group()
       for line, dataLine in enumerate(self.map.map):
             for row, dataRow in enumerate(dataLine):
+                if(dataRow == '1'):
+                    Wall(self, row, line)
                 if(dataRow == 'P'):
                     self.player = Player(self, row, line)
 
