@@ -1,5 +1,5 @@
 import pygame as pg
-from settings import *
+from .settings import *
 vect = pg.math.Vector2
 
 class Player(pg.sprite.Sprite):

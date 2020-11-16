@@ -1,2 +1,2 @@
-deathFriends/fonts
-deathFriends/sprints
+recursive-include deathFriends/fonts *
+recursive-include deathFriends/sprints *

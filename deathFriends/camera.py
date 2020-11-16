@@ -1,5 +1,5 @@
 import pygame as pg
-from settings import *
+from .settings import *
 
 class Camera:
     def __init__(self, width, height):
