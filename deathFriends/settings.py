@@ -23,6 +23,7 @@ GRIDHEIGHT = HEIGHT / TILESIZE
 
 PLAYER_SPEED = 300
 PLAYER_IMG = 'player.png'
+PLAYER_ROT = 250
 
 #Wall Settings
 
