@@ -10,6 +10,7 @@ RED = (255, 0, 0)
 YELLOW = (255, 255, 0)
 
 # game settings
+
 WIDTH = 960
 HEIGHT = 640
 FPS = 60
@@ -28,6 +29,11 @@ PLAYER_IMG = 'player.png'
 PLAYER_ROT = 200
 PLAYER_RECT =  pg.Rect(0, 0, 35, 35)
 
+#Gun Settings
+
+BULLET_IMG =  'gun.png'
+BULLET_SPEED = 500
+BULLET_LIFE = 1000
 
 #Wall Settings
 
