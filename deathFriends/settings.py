@@ -1,3 +1,5 @@
+import pygame as pg
+
 # cores
 WHITE = (255, 255, 255)
 BLACK = (0, 0, 0)
@@ -24,6 +26,8 @@ GRIDHEIGHT = HEIGHT / TILESIZE
 PLAYER_SPEED = 250
 PLAYER_IMG = 'player.png'
 PLAYER_ROT = 200
+PLAYER_RECT =  pg.Rect(0, 0, 35, 35)
+
 
 #Wall Settings
 
