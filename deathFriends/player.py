@@ -36,7 +36,8 @@ class Player(pg.sprite.Sprite):
             if(now - self.last_shot > 150):
                 self.last_shot = now
                 dire = vect(1, 0).rotate(-self.rot)
-                Bullet(self.game,self.pos,dire)
+                pos = self.pos + vect(30,10).rotate(-self.rot)
+                Bullet(self.game,pos,dire)
 
     def collide_walls(self, dir):
         if dir == 'x':
