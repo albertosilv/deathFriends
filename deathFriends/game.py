@@ -4,10 +4,12 @@ from os import path
 
 from .player import Player
 from .wall import Wall
-from .tilemap import Map 
-from .camera  import Camera
+from .tilemap import Map
+from .camera import Camera
 from .settings import *
 from .mapAll import map1
+from .bullet import Bullet
+
 class Game:
     def __init__(self):
         pg.init()
@@ -26,12 +28,18 @@ class Game:
 
         self.backgroudMenu_img = pg.image.load(
             path.join(image_folder, BACKGROUNDMENU))
+
         self.player_img = pg.image.load(
             path.join(image_folder, PLAYER_IMG)).convert_alpha()
+
         self.wall_img = pg.image.load(
             path.join(image_folder, WALL_IMG)).convert_alpha()
 
+        self.bullet_img = pg.image.load(
+            path.join(image_folder, BULLET_IMG)).convert_alpha()
+
         self.titleFont = pg.font.Font(path.join(text_folder, TILEFONT), 45)
+
         self.fontMenu = pg.font.Font(path.join(text_folder, MENUFONT), 35)
 
         self.map = Map(map1)
@@ -40,6 +48,7 @@ class Game:
         # initialize all variables and do all the setup for a new game
         self.all_sprites = pg.sprite.Group()
         self.walls = pg.sprite.Group()
+        self.bullets = pg.sprite.Group()
         for line, dataLine in enumerate(self.map.map):
             for row, dataRow in enumerate(dataLine):
                 if(dataRow == '1'):
