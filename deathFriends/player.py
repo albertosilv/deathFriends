@@ -1,6 +1,7 @@
 import pygame as pg
 from .settings import *
 from .tilemap import collide_hit_rect
+from .bullet import Bullet
 vect = pg.math.Vector2
 
 
@@ -16,6 +17,7 @@ class Player(pg.sprite.Sprite):
         self.vel = vect(0, 0)
         self.pos = vect(x, y)*TILESIZE
         self.rot = 0
+        self.last_shot = 0
 
     def get_keys(self):
         self.rot_speed = 0
@@ -29,6 +31,12 @@ class Player(pg.sprite.Sprite):
             self.vel = vect(PLAYER_SPEED, 0).rotate(-self.rot)
         if keys[pg.K_DOWN] or keys[pg.K_s]:
             self.vel = vect(-PLAYER_SPEED, 0).rotate(-self.rot)
+        if(keys[pg.K_SPACE]):
+            now = pg.time.get_ticks()
+            if(now - self.last_shot > 150):
+                self.last_shot = now
+                dire = vect(1, 0).rotate(-self.rot)
+                Bullet(self.game,self.pos,dire)
 
     def collide_walls(self, dir):
         if dir == 'x':
