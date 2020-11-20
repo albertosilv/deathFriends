@@ -3,10 +3,13 @@ from .game import Game
 def loop():
     g = Game()
     option = g.show_start_screen()
-    while True:
-        g.new()
-        g.run()
-        g.show_go_screen()
+    if(option==2):
+        g.config_screen()
+    else:
+        while True:
+            g.new()
+            g.run()
+            g.show_go_screen()
 
 
 if __name__ == '__main__':

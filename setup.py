@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name='deathFriends',
-    version='0.0.4',
+    version='0.0.5',
     url='https://github.com/albertosilv/deathFriends',
     license='MIT License',
     author='José Alberto',

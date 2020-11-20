@@ -1,7 +1,7 @@
 import pygame as pg
 import sys
 from os import path
-
+import time
 from .player import Player
 from .wall import Wall
 from .tilemap import Map
@@ -110,7 +110,7 @@ class Game:
             if(400 < mousePosition[0] < 565 and 245 < mousePosition[1] < 275) and click[0] == 1:
                 return 1
             if(370 < mousePosition[0] < 585 and 305 < mousePosition[1] < 330 and click[0] == 1):
-                self.config_screen()
+                return 2
             if(450 < mousePosition[0] < 510 and 360 < mousePosition[1] < 385 and click[0] == 1):
                 self.quit()
 
@@ -118,7 +118,8 @@ class Game:
             pg.display.flip()
         
     def config_screen(self):
-         while(True):
+        time.sleep(0.2)
+        while(True):
             for e in pg.event.get():
                 if(e.type == pg.QUIT):
                     self.quit()
