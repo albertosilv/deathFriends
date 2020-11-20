@@ -110,6 +110,33 @@ class Game:
             if(400 < mousePosition[0] < 565 and 245 < mousePosition[1] < 275) and click[0] == 1:
                 return 1
             if(370 < mousePosition[0] < 585 and 305 < mousePosition[1] < 330 and click[0] == 1):
+                self.config_screen()
+            if(450 < mousePosition[0] < 510 and 360 < mousePosition[1] < 385 and click[0] == 1):
+                self.quit()
+
+            self.clock.tick(FPS)
+            pg.display.flip()
+        
+    def config_screen(self):
+         while(True):
+            for e in pg.event.get():
+                if(e.type == pg.QUIT):
+                    self.quit()
+            self.screen.blit(self.backgroudMenu_img, (0, 0))
+
+            # Titulo do jogo
+            self.textObjetc('death friends', self.titleFont, 5)
+
+            # Botoes
+            self.textObjetc('Opç1', self.fontMenu, 2.5)
+            self.textObjetc('Opç2', self.fontMenu, 2)
+            self.textObjetc('Opç3', self.fontMenu, 1.7)
+
+            mousePosition = pg.mouse.get_pos()
+            click = pg.mouse.get_pressed()
+            if(400 < mousePosition[0] < 565 and 245 < mousePosition[1] < 275) and click[0] == 1:
+                self.quit()
+            if(370 < mousePosition[0] < 585 and 305 < mousePosition[1] < 330 and click[0] == 1):
                 self.quit()
             if(450 < mousePosition[0] < 510 and 360 < mousePosition[1] < 385 and click[0] == 1):
                 self.quit()
