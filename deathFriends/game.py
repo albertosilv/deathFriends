@@ -1,5 +1,6 @@
 import pygame as pg
 import sys
+import pygame_textinput
 from os import path
 import time
 from .player import Player
@@ -9,6 +10,8 @@ from .camera import Camera
 from .settings import *
 from .mapAll import map1
 from .bullet import Bullet
+
+
 
 class Game:
     def __init__(self):
@@ -98,19 +101,19 @@ class Game:
             self.screen.blit(self.backgroudMenu_img, (0, 0))
 
             # Titulo do jogo
-            self.textObjetc('death friends', self.titleFont, 5)
+            self.textObjetc('death friends', self.titleFont,2, 5)
 
             # Botoes
-            self.textObjetc('Iniciar jogo', self.fontMenu, 2.5)
-            self.textObjetc('Configurações', self.fontMenu, 2)
-            self.textObjetc('Sair', self.fontMenu, 1.7)
+            self.textObjetc('Iniciar jogo', self.fontMenu,2, 2.5)
+            self.textObjetc('Configurações', self.fontMenu,2, 2)
+            self.textObjetc('Sair', self.fontMenu,2, 1.7)
 
             mousePosition = pg.mouse.get_pos()
             click = pg.mouse.get_pressed()
             if(400 < mousePosition[0] < 565 and 245 < mousePosition[1] < 275) and click[0] == 1:
                 return 1
             if(370 < mousePosition[0] < 585 and 305 < mousePosition[1] < 330 and click[0] == 1):
-                return 2
+                self.config_screen()
             if(450 < mousePosition[0] < 510 and 360 < mousePosition[1] < 385 and click[0] == 1):
                 self.quit()
 
@@ -126,12 +129,13 @@ class Game:
             self.screen.blit(self.backgroudMenu_img, (0, 0))
 
             # Titulo do jogo
-            self.textObjetc('death friends', self.titleFont, 5)
+            self.textObjetc('death friends', self.titleFont,2, 5)
 
             # Botoes
-            self.textObjetc('Opç1', self.fontMenu, 2.5)
-            self.textObjetc('Opç2', self.fontMenu, 2)
-            self.textObjetc('Opç3', self.fontMenu, 1.7)
+            self.textObjetc('Opç1', self.fontMenu,2, 2.5)
+            self.textObjetc('Opç2', self.fontMenu,2, 2)
+            self.textObjetc('Opç3', self.fontMenu,2, 1.7)
+            self.textObjetc('Voltar', self.fontMenu, 1.1, 1.1)
 
             mousePosition = pg.mouse.get_pos()
             click = pg.mouse.get_pressed()
@@ -141,6 +145,41 @@ class Game:
                 self.quit()
             if(450 < mousePosition[0] < 510 and 360 < mousePosition[1] < 385 and click[0] == 1):
                 self.quit()
+            if(830 < mousePosition[0] < 920 and 570 < mousePosition[1] < 595 and click[0] == 1):
+                return 2
+
+            self.clock.tick(FPS)
+            pg.display.flip()
+
+    def nick_screen(self):
+        textinput = pygame_textinput.TextInput()
+        time.sleep(0.2)
+        while(True):
+            for e in pg.event.get():
+                if(e.type == pg.QUIT):
+                    self.quit()
+            self.screen.blit(self.backgroudMenu_img, (0, 0))
+
+            # Titulo do jogo
+            self.textObjetc('death friends', self.titleFont,2, 5)
+
+            # Botoes
+            self.textObjetc('Qual seu nickname?', self.fontMenu,2, 2.5)
+            textinput.update(events)
+            self.screen.blit(textinput.get_surface(), (10, 10))
+            self.textObjetc('Confirmar', self.fontMenu,1.5, 1.1)
+            self.textObjetc('Voltar', self.fontMenu, 1.1, 1.1)
+
+            mousePosition = pg.mouse.get_pos()
+            click = pg.mouse.get_pressed()
+            if(400 < mousePosition[0] < 565 and 245 < mousePosition[1] < 275) and click[0] == 1:
+                self.quit()
+            if(370 < mousePosition[0] < 585 and 305 < mousePosition[1] < 330 and click[0] == 1):
+                self.quit()
+            if(450 < mousePosition[0] < 510 and 360 < mousePosition[1] < 385 and click[0] == 1):
+                return 9
+            if(830 < mousePosition[0] < 920 and 570 < mousePosition[1] < 595 and click[0] == 1):
+                return 2
 
             self.clock.tick(FPS)
             pg.display.flip()
@@ -148,8 +187,10 @@ class Game:
     def show_go_screen(self):
         pass
 
-    def textObjetc(self, text, font, location):
+    def textObjetc(self, text, font, locationx, locationy):
         textSurf = font.render(text, True, WHITE)
         textReact = textSurf.get_rect()
-        textReact.center = (int(WIDTH/2), int(HEIGHT/location))
+        textReact.center = (int(WIDTH/locationx), int(HEIGHT/locationy))
         self.screen.blit(textSurf, textReact)
+ 
+

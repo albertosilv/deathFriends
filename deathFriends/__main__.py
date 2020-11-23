@@ -3,9 +3,9 @@ from .game import Game
 def loop():
     g = Game()
     option = g.show_start_screen()
-    if(option==2):
-        g.config_screen()
-    else:
+    if option == 1:
+        g.nick_screen()
+    if option == 9:
         while True:
             g.new()
             g.run()
