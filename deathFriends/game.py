@@ -1,6 +1,5 @@
 import pygame as pg
 import sys
-import pygame_textinput
 from os import path
 import time
 from .player import Player
@@ -10,8 +9,7 @@ from .camera import Camera
 from .settings import *
 from .mapAll import map1
 from .bullet import Bullet
-
-
+from .pygame_textinput import TextInput
 
 class Game:
     def __init__(self):
@@ -152,7 +150,7 @@ class Game:
             pg.display.flip()
 
     def nick_screen(self):
-        textinput = pygame_textinput.TextInput()
+        textinput = TextInput()
         time.sleep(0.2)
         while(True):
             for e in pg.event.get():
@@ -165,21 +163,11 @@ class Game:
 
             # Botoes
             self.textObjetc('Qual seu nickname?', self.fontMenu,2, 2.5)
-            textinput.update(events)
-            self.screen.blit(textinput.get_surface(), (10, 10))
+            textinput.update(pg.event.get())
+            self.screen.blit(textinput.get_surface(), (WIDTH/2, HEIGHT/2))
             self.textObjetc('Confirmar', self.fontMenu,1.5, 1.1)
             self.textObjetc('Voltar', self.fontMenu, 1.1, 1.1)
 
-            mousePosition = pg.mouse.get_pos()
-            click = pg.mouse.get_pressed()
-            if(400 < mousePosition[0] < 565 and 245 < mousePosition[1] < 275) and click[0] == 1:
-                self.quit()
-            if(370 < mousePosition[0] < 585 and 305 < mousePosition[1] < 330 and click[0] == 1):
-                self.quit()
-            if(450 < mousePosition[0] < 510 and 360 < mousePosition[1] < 385 and click[0] == 1):
-                return 9
-            if(830 < mousePosition[0] < 920 and 570 < mousePosition[1] < 595 and click[0] == 1):
-                return 2
 
             self.clock.tick(FPS)
             pg.display.flip()
